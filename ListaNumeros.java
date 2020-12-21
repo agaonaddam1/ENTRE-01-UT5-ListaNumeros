@@ -185,8 +185,21 @@ public class ListaNumeros
      * 
      */
     public int[][] toArray2D() {
-
-        return null;
+        int[][] ragged = new int[pos][];
+        for (int i = 0; i < ragged.length; i++){
+            ragged[i] = new int[i + 1];
+        }
+        for (int i = 0; i < ragged.length; i++){
+            for(int j = 0; j < ragged[i].length; j++){
+                if (j == 0 || j == ragged[i].length - 1){
+                    ragged[i][j] = 1;
+                }
+                else{
+                    ragged[i][j] = ragged[i - 1][j - 1] + ragged[i - 1][j];
+                }
+            }
+        }
+        return ragged;
     }
 
     /**
