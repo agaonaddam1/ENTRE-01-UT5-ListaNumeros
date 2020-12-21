@@ -166,7 +166,16 @@ public class ListaNumeros
      *  
      */
     public void invertir(int n) {
-
+        int[] copia = new int[n];
+        for (int i = -1; i < pos - n; i += n){
+            System.arraycopy(lista, i + 1, copia, 0, n);
+            for(int j = 0; j < copia.length / 2; j++){ 
+                int aux = copia[j];
+                copia[j] = copia[copia.length - j - 1];
+                copia[copia.length - j - 1] = aux;
+            }
+            System.arraycopy(copia, 0, lista, i + 1, n);
+        }
     }
 
     /**
